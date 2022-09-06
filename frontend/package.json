@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
     "chart.js": "^3.9.1",
-    "material-table": "^2.0.3",
     "rc-table": "^7.27.2",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
