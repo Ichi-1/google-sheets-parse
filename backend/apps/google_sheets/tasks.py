@@ -71,7 +71,7 @@ def notify_expired_supply():
     """
     Осуществляет фильтрацию queryset по отношению к текущей дате.
     Если текущая дата больше чем дата поставки, то поставка просрочена - 
-    небходимо отправить уведомление в Telegram: https://t.me/notify_expire
+    небходимо отправить уведомление в Telegram: https://t.me/notifyMyExpired
     """
     today = date.today()
     expired_orders = Order.objects.filter(supply_date__lte=today)
