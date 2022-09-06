@@ -26,3 +26,6 @@
 Альтернативный вариант - использование протокола websocket, но для данного proof-of-concept варианта я решил использовать http и получать данные через GET из API.
 
 
+### Google Sheets
+
+[Google Sheets](https://docs.google.com/spreadsheets/d/1ldvQcQqF8FGgQ1EFofaHRSJc7LdtbZyEWxr8O21_oMU/edit#gid=0)
