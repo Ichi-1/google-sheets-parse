@@ -1,3 +1,5 @@
+![Overview](https://i.ibb.co/LJGyFNc/overview.png)
+
 ## Команда для запуска проекта
 ```docker-compose up```
 ### После билда docker-compose доступны следующие ресурсы:
