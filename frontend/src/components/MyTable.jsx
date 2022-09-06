@@ -37,6 +37,12 @@ export const MyTable = () => {
             key: 'supply_date',
             width: 200,
         },
+        {
+            title: 'Value, RUB',
+            dataIndex: 'value_rub',
+            key: 'value_rub',
+            width: 200,
+        },
     ];
 
 
