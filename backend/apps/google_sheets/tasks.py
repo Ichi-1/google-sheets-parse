@@ -81,5 +81,5 @@ def notify_expired_supply():
             'json', 
             expired_orders.only('order_number', 'supply_date')
         )
-    send_message(json)
+        send_message(json)
     
