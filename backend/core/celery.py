@@ -17,4 +17,8 @@ app.conf.beat_schedule = {
         'task': 'parse_google_sheet',
         'schedule': timedelta(seconds=10),
     },
+    'notify_expired_supply-every-10-sec': {
+        'task': 'notify_expired_supply',
+        'schedule': timedelta(seconds=10)
+    }
 }

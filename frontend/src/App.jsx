@@ -5,8 +5,9 @@ import { useFetch } from 'hooks/useFetch';
 import { useEffect, useState } from 'react';
 import OrderService from 'api/OrderService';
 import { MyTable } from 'components/MyTable';
-const Header = styled.div`
-    
+
+
+const Header = styled.div`    
     img {
         width: 100px;
         height: 100px;
@@ -16,7 +17,7 @@ const Header = styled.div`
     height: 130px;
     background-color: #3ad082;
     width: 100%;
-`
+`;
 
 const Main = styled.div`
     display: flex;
@@ -29,29 +30,26 @@ const Main = styled.div`
 const SubLeft = styled.div`
     width: 40%;
     height: 100%;
-    border: 2px solid gold;
 `;
 
 const SubRight = styled.div`
     display: flex;
     width: 39%;
     height: 100%;
-    border: 2px solid gold; 
     justify-content: center;
-    
 `;
 
 const TotalCount = styled.div`
     width: 450px;
     height:200px;
     background-color: #626161;
+    margin-left: 15px;
 
     h2 {
         padding: 0;
         margin: 0;
         color: #fff;
         text-transform: uppercase;
-        
     }
 
     h1 {

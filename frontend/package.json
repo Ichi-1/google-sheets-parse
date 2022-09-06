@@ -5,9 +5,9 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "@mui/material": "^5.10.3",
-    "@mui/x-data-grid": "^5.17.1",
     "chart.js": "^3.9.1",
+    "material-table": "^2.0.3",
+    "rc-table": "^7.27.2",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",

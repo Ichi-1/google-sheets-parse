@@ -1,42 +1,57 @@
-import React, { useState, useEffect }from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import { useState, useEffect } from 'react';
 import { useFetch } from 'hooks/useFetch';
 import OrderService from 'api/OrderService';
-
-const columns = [
-    { field: '#', headerName: 'ID', width: 70 },
-    { field: 'Order number', headerName: 'Order number', width: 130 },
-    { field: 'Value,$', headerName: 'Value,$', width: 130 },
-    { field: 'Supply Date', headerName: 'Supply Date', width: 130 },
-];
+import Table from 'rc-table'
 
 
 export const MyTable = () => {
-    const [rows, setRows] = useState([])
+    const [data, setData] = useState([])
     const [fetchOrders, isLoading, errors] = useFetch(async () => {
         const response = await OrderService.getOrders()
         const json = await response.json()
-        console.log(json.results)
-        setRows([json.results])
-
+        setData(json.results)
     })
+
+    const columns = [
+        {
+            title: '#',
+            dataIndex: 'index',
+            key: 'index',
+            width: 100,
+        },
+        {
+            title: 'order_number',
+            dataIndex: 'order_number',
+            key: 'order_number',
+            width: 100,
+        },
+        {
+            title: 'Value, $',
+            dataIndex: 'value_usd',
+            key: 'value_usd',
+            width: 200,
+        },
+        {
+            title: 'Supply Date',
+            dataIndex: 'supply_date',
+            key: 'supply_date',
+            width: 200,
+        },
+    ];
 
 
     useEffect(() => {
         const interval = setInterval(() => {
-          fetchOrders();
+            fetchOrders();
         }, 5000);
         return () => clearInterval(interval);
     }, []);
 
     return (
         <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-                getRowId={x => Math.random()}
-                rows={rows}
+            <Table
+                data={data}
                 columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
             />
         </div>
     );

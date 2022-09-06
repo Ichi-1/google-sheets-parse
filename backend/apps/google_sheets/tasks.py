@@ -1,12 +1,13 @@
-import decimal
 import gspread
 import pandas as pd
-from apps.google_sheets.utils import get_current_usd_course
+from apps.google_sheets.utils import get_current_usd_course, send_message
 from celery import shared_task
-from datetime import datetime
+from datetime import datetime, date
 from decouple import config
 from django.conf import settings
 from sqlalchemy import create_engine
+from .models import Order
+from django.core import serializers
 
 
 DB_PORT = config("DB_PORT")
@@ -65,4 +66,20 @@ def parse_google_sheet():
         raise ValueError('Cannot write to Database!') 
 
 
+@shared_task(name='notify_expired_supply')
+def notify_expired_supply():
+    """
+    Осуществляет фильтрацию queryset по отношению к текущей дате.
+    Если текущая дата больше чем дата поставки, то поставка просрочена - 
+    небходимо отправить уведомление в Telegram: https://t.me/notify_expire
+    """
+    today = date.today()
+    expired_orders = Order.objects.filter(supply_date__lte=today)
 
+    if expired_orders.exists():
+        json = serializers.serialize(
+            'json', 
+            expired_orders.only('order_number', 'supply_date')
+        )
+    send_message(json)
+    

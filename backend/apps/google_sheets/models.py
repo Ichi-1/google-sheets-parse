@@ -22,7 +22,7 @@ class Order(models.Model):
     value_rub = models.DecimalField(decimal_places=3, max_digits=10)
     
     def __str__(self):
-        return (f"Заказ №:{self.number}/ "
+        return (f"Заказ №:{self.order_number}/ "
                 f"Стоимость RUB: {self.value_rub}/ "
                 f"Стоимость USD {self.value_usd}"
                 )

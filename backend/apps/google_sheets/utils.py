@@ -1,6 +1,9 @@
 import traceback
 import xmltodict
 import urllib3
+import requests
+from django.conf import settings
+from requests.structures import CaseInsensitiveDict
 
 def get_cbr_xml():
     """
@@ -31,3 +34,23 @@ def get_current_usd_course():
             return float(valute["Value"].replace(',', '.'))
     
     
+def send_message(payload):
+    API_URL = "https://api.telegram.org/bot"
+    TOKEN = settings.TELEGRAM_BOT_TOKEN
+    method = '/sendMessage?'
+    chat_id = settings.TELEGRAM_CHANNEL_ID
+
+    headers = CaseInsensitiveDict()
+    headers["Content-Type"] = "application/json"
+    
+    data = { 'text': "```\n" + payload + "\n```" }
+
+    response = requests.post(
+        url=f'{API_URL}{TOKEN}{method}chat_id={chat_id}&parse_mode=Markdown',
+        headers=headers,
+        json=data
+    )
+
+    if response.status_code != 200:
+        raise Exception(f'POST error. STATUS {response.status_code}')
+    return 'Notifcation Sended!'
