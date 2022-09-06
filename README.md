@@ -1,6 +1,6 @@
 ## Команда для запуска проекта
 ```docker-compose up```
-### После запуска доступны следующие ресурсы:
+### После билда docker-compose доступны следующие ресурсы:
 - Django (API Schema) http://localhost:8000
 - React app http://localhost:3000
 
